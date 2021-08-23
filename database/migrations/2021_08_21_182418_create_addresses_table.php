@@ -21,8 +21,8 @@ class CreateAddressesTable extends Migration
             $table->string('city');
             $table->string('state',2);
             $table->string('complement');
-            $table->string('addressable_type');
-            $table->bigInteger('addressable_id',2);
+            $table->morphs('addressable');
+            $table->morphs('addressable',2);
             $table->timestamps();
         });
     }
