@@ -15,12 +15,11 @@ class CreateServiceOrdersTable extends Migration
     {
         Schema::create('service_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('deadline', 2);
-            $table->decimal('discount', 8, 2);
-            $table->morphs('client', 20);
-            $table->morphs('company', 20);
-            $table->morphs('status', 20);
-            $table->char('code', 36);
+            $table->string('deadline', 4)->nullable();
+            $table->decimal('discount', 8, 2)->default(0);
+            $table->foreignId('client_id')->constrained();
+            $table->foreignId('company_id')->constrained();
+            $table->foreignId('status_id')->constrained();
             $table->timestamps();
         });
     }

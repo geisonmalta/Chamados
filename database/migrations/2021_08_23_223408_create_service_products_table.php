@@ -16,9 +16,9 @@ class CreateServiceProductsTable extends Migration
         Schema::create('service_products', function (Blueprint $table) {
             $table->id();
             $table->string('description');
-            $table->tinyInteger('product')->default(0);
-            $table->tinyInteger('service')->default(0);
             $table->decimal('value', 8, 2);
+            $table->boolean('product')->default(0);
+            $table->boolean('service')->default(0);
             $table->timestamps();
         });
     }
