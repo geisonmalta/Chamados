@@ -18,8 +18,7 @@ class CreateClientsTable extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('cpf', 11)->unique()->nullable();
-            $table->string('cnpj', 14)->unique()->nullable()
-            ;
+            $table->string('cnpj', 14)->unique()->nullable();
             $table->string('email')->unique();
             $table->timestamps();
         });
