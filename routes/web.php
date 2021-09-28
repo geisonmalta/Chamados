@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CompanyController;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,36 +21,49 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('clients/report', [ClientController::class, 'report']);
+Route::resource('clients', ClientController::class);
 
-Route::get('clients', function () {
-    return view('clients.index', [
-        'clients' => Client::all(),
-    ]);
-})->name('clients.index');
+Route::resource('companies', CompanyController::class);
+// show     GET     /companies/{company}
 
-Route::get('clients/create', function () {
-    return view('clients.create');
-})->name('clients.create');
+// Route::get('clients', [ClientController::class, 'index']);
+// Route::get('clients/create', [ClientController::class, 'create']);
+// Route::post('clients', [ClientController::class, 'store']);
+// Route::get('clients/{client}', [ClientController::class, 'show']);
+// Route::get('clients/{client}/edit', [ClientController::class, 'edit']);
+// Route::put('clients/{client}', [ClientController::class, 'update']);
+// Route::delete('clients/{client}', [ClientController::class, 'destroy']);
 
-Route::post('clients', function (Request $request) {
-    return redirect('clients');
-})->name('clients.store');
+// Route::get('clients', function () {
+//     return view('clients.index', [
+//         'clients' => Client::all(),
+//     ]);
+// })->name('clients.index');
 
-Route::get('clients/{client}', function (Client $client) {
-    return view('clients.show', ['client'=> $client]);
-})->name('clients.show');
+// Route::get('clients/create', function () {
+//     return view('clients.create');
+// })->name('clients.create');
 
-Route::get('clients/{client}/edit', function (Client $client) {
-    return view('clients.edit',['client'=> $client]);
-})->name('clients.edit');
+// Route::post('clients', function (Request $request) {
+//     return redirect('clients');
+// })->name('clients.store');
 
-Route::put('clients/{client}', function (Request $request, Client $client) {
-    return redirect('clients');
-})->name('clients.update');
+// Route::get('clients/{client}', function (Client $client) {
+//     return view('clients.show', ['client'=> $client]);
+// })->name('clients.show');
 
-Route::delete('clients/{client}', function (Client $client) {
-    return redirect('clients');
-})->name('clients.destroy');
+// Route::get('clients/{client}/edit', function (Client $client) {
+//     return view('clients.edit',['client'=> $client]);
+// })->name('clients.edit');
+
+// Route::put('clients/{client}', function (Request $request, Client $client) {
+//     return redirect('clients');
+// })->name('clients.update');
+
+// Route::delete('clients/{client}', function (Client $client) {
+//     return redirect('clients');
+// })->name('clients.destroy');
 
 // GET | POST | PUT | DELETE
 // CRUD -> Create, Read, Update e Delete
@@ -60,3 +75,4 @@ Route::delete('clients/{client}', function (Client $client) {
 // edit     GET     /clients/{client}/edit
 // update   PUT     /clients/{client}
 // destroy  DELETE  /clients/{client}
+
