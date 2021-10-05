@@ -21,6 +21,14 @@
 
     <a href="{{ route('clients.index')}}">Voltar</a>
 
+    @if ($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form action="{{ route('clients.store') }}" method="POST">
         @csrf
 
@@ -35,6 +43,14 @@
         <div>
             <label>Email</label>
             <input type="email" name="email">
+        </div>
+        <div>
+            <label>CPF</label>
+            <input type="text" name="cpf">
+        </div>
+        <div>
+            <label>CNPJ</label>
+            <input type="text" name="cnpj">
         </div>
 
         <button type="submit">Cadastrar cliente</button>

@@ -37,9 +37,22 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all(), $request->only(['name', 'lastname', 'email']));
+        $validated = $request->validate([
+            'name'     => ['required'],
+            'lastname' => ['required'],
+            'email'    => ['required', 'email', 'unique:clients,email'],
+            'cpf'      => ['nullable', 'digits:11'],
+            'cnpj'     => ['nullable', 'digits:14'],
+        ]);
 
-        $client = Client::create($request->only(['name', 'lastname', 'email', 'cpf', 'cnpj']));
+        // dd(
+        //     $request->all(),
+        //     $request->only(['name', 'lastname', 'email', 'cpf', 'cnpj']),
+        //     $validated
+        // );
+
+        // $client = Client::create($request->only(['name', 'lastname', 'email', 'cpf', 'cnpj']));
+        $client = Client::create($validated);
 
         return redirect()->route('clients.show', $client);
     }
