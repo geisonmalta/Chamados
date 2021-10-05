@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CompanyController;
-use App\Models\Client;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,11 +66,11 @@ Route::resource('companies', CompanyController::class);
 // GET | POST | PUT | DELETE
 // CRUD -> Create, Read, Update e Delete
 
-// index    GET     /clients
-// store    POST    /clients
-// create   GET     /clients/create
-// show     GET     /clients/{client}
-// edit     GET     /clients/{client}/edit
-// update   PUT     /clients/{client}
-// destroy  DELETE  /clients/{client}
+// index    GET     /companies
+// store    POST    /companies
+// create   GET     /companies/create
+// show     GET     /companies/{company}
+// edit     GET     /companies/{company}/edit
+// update   PUT     /companies/{company}
+// destroy  DELETE  /companies/{company}
 

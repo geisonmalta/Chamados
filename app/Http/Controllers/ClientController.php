@@ -37,7 +37,11 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect('clients');
+        // dd($request->all(), $request->only(['name', 'lastname', 'email']));
+
+        $client = Client::create($request->only(['name', 'lastname', 'email', 'cpf', 'cnpj']));
+
+        return redirect()->route('clients.show', $client);
     }
 
     /**
