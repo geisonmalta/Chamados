@@ -41,8 +41,8 @@ class ClientController extends Controller
             'name'     => ['required'],
             'lastname' => ['required'],
             'email'    => ['required', 'email', 'unique:clients,email'],
-            'cpf'      => ['nullable', 'digits:11'],
-            'cnpj'     => ['nullable', 'digits:14'],
+            'cpf'      => ['nullable', 'digits:11', 'unique:clients,cpf'],
+            'cnpj'     => ['nullable', 'digits:14', 'unique:clients,cnpj'],
         ]);
 
         // dd(
