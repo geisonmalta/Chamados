@@ -15,7 +15,7 @@ class AlterUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->after('name', function ($table) {
-                $table->foreignId('company_id')->constrained();
+                $table->foreignId('company_id')->nullable()->constrained();
             });
 
             $table->after('remember_token', function ($table) {
